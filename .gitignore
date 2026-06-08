@@ -1,0 +1,14 @@
+# Ignore personal server deployment notes
+linux_permissions_guide.md
+
+# Ignore environment files
+.env
+.env.*
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE files
+.vscode/
+.idea/
