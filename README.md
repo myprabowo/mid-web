@@ -19,8 +19,28 @@ This application is designed to run on a Linux server (Ubuntu/Debian) with a sta
 
 ## Installation & Deployment Guide
 
-1.  **Clone Repository**
-    Clone this repository and move the `index.php` file to your web root directory (Document Root).
+1.  **Install MarkItDown**
+    You can install the `markitdown` CLI in two ways:
+    
+    **Option A: Global Installation (Regular)**
+    ```bash
+    pip3 install markitdown
+    ```
+    
+    **Option B: Virtual Environment (Recommended for Servers)**
+    ```bash
+    # Create a virtual environment directory
+    python3 -m venv /home/username/markitdown-env
+    
+    # Activate and install
+    source /home/username/markitdown-env/bin/activate
+    pip install markitdown
+    
+    # The binary will be located at: /home/username/markitdown-env/bin/markitdown
+    ```
+
+2.  **Clone Repository**
+    Clone this repository and move the `index.php` and `api.php` files to your web root directory (Document Root).
     ```bash
     git clone https://github.com/username/markitdown-web.git
     cp markitdown-web/index.php /path/to/your/web/root/
