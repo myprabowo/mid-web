@@ -43,17 +43,17 @@ This application is designed to run on a Linux server (Ubuntu/Debian) with a sta
     Clone this repository and move the `index.php` and `api.php` files to your web root directory (Document Root).
     ```bash
     git clone https://github.com/username/markitdown-web.git
-    cp markitdown-web/index.php /path/to/your/web/root/
+    cp markitdown-web/* /path/to/your/web/root/
     ```
 
-2.  **Configure MarkItDown Binary Path**
-    Open `index.php` and adjust the `$markitdownBinary` variable at the top of the file to match the absolute path of your `markitdown` installation.
-    ```php
-    // Example if installed via a virtual environment
-    $markitdownBinary = '/home/user/markitdown-env/.venv/bin/markitdown'; 
+3.  **Configure Environment Variables**
+    Copy `.env.example` to `.env` and adjust the `MARKITDOWN_BINARY` variable to match the absolute path of your `markitdown` installation. You can also set an optional `API_KEY` to secure the API endpoint.
+    ```bash
+    cp .env.example .env
+    nano .env
     ```
 
-3.  **Set Up Web Server & Upload Limits**
+4.  **Set Up Web Server & Upload Limits**
     - Configure Nginx/Apache to serve the `index.php` directory.
     - Because document files can be large (like PDFs or Presentations), it is highly recommended to increase PHP upload limits in your `php.ini` file:
       ```ini
@@ -61,7 +61,7 @@ This application is designed to run on a Linux server (Ubuntu/Debian) with a sta
       post_max_size = 50M
       ```
 
-4.  **Linux Execution Permissions (Crucial!)**
+5.  **Linux Execution Permissions (Crucial!)**
     This application runs under the web user (such as `www-data` or `www`). This user **must** have execution permissions for the `markitdown` binary file.
     If you installed `markitdown` inside another user's `home` directory, you can use Access Control Lists (ACL) to grant secure access.
     *Please refer to the `linux_permissions_guide.md` file for a complete guide on configuring these security permissions.*
