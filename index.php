@@ -59,7 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['document'])) {
                 $escapedPath = escapeshellarg($destPath);
                 
                 // Command to execute (Redirect stderr to stdout to capture errors)
-                $cmd = "$markitdownBinary $escapedPath 2>&1";
+                // We inject PATH because php-fpm often strips it, which causes Python's os.environ['PATH'] to throw KeyError
+                $cmd = "export PATH=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:\$PATH\"; $markitdownBinary $escapedPath 2>&1";
                 
                 // Execute
                 exec($cmd, $output, $returnVar);
