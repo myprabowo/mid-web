@@ -74,6 +74,13 @@ If `API_KEY` is set in your `.env` file, you must include it in your HTTP reques
 }
 ```
 
+**cURL Example:**
+```bash
+curl -X POST https://yourdomain.com/api.php \
+  -H "Authorization: Bearer your_secret_api_key" \
+  -F "document=@/path/to/your/file.pdf"
+```
+
 ## How to Use
 
 1. Open your browser and navigate to your application's domain/IP.

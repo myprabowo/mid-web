@@ -1,5 +1,5 @@
 # Ignore personal server deployment notes
-linux_permissions_guide.md
+# (Removed linux_permissions_guide.md to track it in git)
 
 # Ignore environment files
 .env
