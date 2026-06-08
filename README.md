@@ -46,6 +46,34 @@ This application is designed to run on a Linux server (Ubuntu/Debian) with a sta
     If you installed `markitdown` inside another user's `home` directory, you can use Access Control Lists (ACL) to grant secure access.
     *Please refer to the `linux_permissions_guide.md` file for a complete guide on configuring these security permissions.*
 
+## API Endpoint (e.g. for n8n Integration)
+
+You can integrate this tool with external services like **n8n**, **Make**, or custom scripts using the `api.php` endpoint.
+
+**Request Details:**
+* **Method:** `POST`
+* **URL:** `https://yourdomain.com/api.php`
+* **Content-Type:** `multipart/form-data`
+* **Body Parameters:** 
+  * `document`: (File) The file you want to convert.
+
+**Security (Optional API Key):**
+To protect the API endpoint from unauthorized access, you can define an API key in your `.env` file:
+```env
+MARKITDOWN_BINARY=/home/uplb/markitdown-env/.venv/bin/markitdown
+API_KEY=your_secret_api_key
+```
+If `API_KEY` is set in your `.env` file, you must include it in your HTTP request using the `Authorization` header:
+`Authorization: Bearer your_secret_api_key`
+
+**Response Example (Success):**
+```json
+{
+  "success": true,
+  "markdown": "# Your Markdown Output Here\n..."
+}
+```
+
 ## How to Use
 
 1. Open your browser and navigate to your application's domain/IP.
